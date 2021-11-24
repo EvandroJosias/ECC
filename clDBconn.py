@@ -5,11 +5,8 @@ import io
 
 class DBConn:
     def __init__( self, databasename = ':memory:' ) -> None:
-        print("Criou o banco : ", databasename )
-        self.__tables = []
         self.__conn = sqlite3.connect( databasename )        
         self.__cursor = self.__conn.cursor()
-        self.__getTables()
 
     def __del__(self) -> None:
         self.__conn.commit()
@@ -18,8 +15,10 @@ class DBConn:
     def check_struct(self, dictionary):
         for key in dictionary:
             if key == 'table' :
-               self.__getStruct( dictionary[key]) 
-            print(key)
+                if self.ExistTables( dictionary[key] ) == False:
+                    self.create_struct( dictionary )
+                else:
+                    print("fazer o check", dictionary[key] )    
 
     def create_struct(self, dictionary):
         fields = dictionary['fields']
@@ -37,11 +36,13 @@ class DBConn:
         strSql = strSql[ 0:lix-2 ] + " )" 
         self.__cursor.execute( strSql )
 
-    def __getTables( self ):
+    def ExistTables( self, pTbl ):
         strSql = "SELECT name FROM sqlite_master WHERE type='table';"
         self.__cursor.execute( strSql )
-        colunas = [tupla[0] for tupla in self.__cursor.fetchall()]
-        print('Colunas:', colunas)
+        for tupla in self.__cursor.fetchall():
+            if tupla[0] == pTbl:
+               return True
+        return False
 
     def __getStruct( self, tblname ):
         # obtendo informações da tabela
