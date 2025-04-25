@@ -1,4 +1,4 @@
-package com.view;
+package com.ecc.view;
 
 import com.Controllers.FileTypeFilter;
 import com.Controllers.Processamento;
