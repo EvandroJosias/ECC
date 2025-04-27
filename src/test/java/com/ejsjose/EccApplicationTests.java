@@ -1,4 +1,4 @@
-package com.ejsjose.ecc;
+package com.ejsjose;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
