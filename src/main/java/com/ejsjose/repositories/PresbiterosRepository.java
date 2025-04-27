@@ -1,11 +1,15 @@
-package main.java.com.ejsjose.repositories;
+package com.ejsjose.repositories;
 
-import main.java.com.ejsjose.domain.presbiteros.Presbiteros;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.ejsjose.domain.presbiteros.Presbiteros;
 
 public interface PresbiterosRepository extends JpaRepository< Presbiteros, Long> {
 
-    Optional<Presbiteros> findPresbiterosByName(String name);
+    Optional<Presbiteros> findPresbiterosByName(String fdl_name);
 
-    Optional<Presbiteros> findPresbiterosById(Long id);
+    Optional<Presbiteros> findPresbiterosById(Long fdl_id);
 
 }

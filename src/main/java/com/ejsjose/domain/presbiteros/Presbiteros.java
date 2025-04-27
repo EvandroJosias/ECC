@@ -1,22 +1,29 @@
-package main.java.com.ejsjose.domain.presbiteros;
+package com.ejsjose.domain.presbiteros;
 
-import java.lang.annotation.Inherited;
-
-import javax.annotation.processing.Generated;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity( name="tbl_presbiteros")
 @Table(name="tbl_presbiteros")
 @Getter
 @Setter
-@AllArgsContructor
+@AllArgsConstructor
 @EqualsAndHashCode(of="id")
 public class Presbiteros {
     
-    @id
+    @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long id;
 
-    @Colunm( unique=true )
-    private String Name;
+    @Column( unique=true )
+    private String name;
     
 }
