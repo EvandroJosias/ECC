@@ -1,4 +1,6 @@
-package com.ejsjose.domain.presbiteros;
+package com.ejsjose.domain;
+
+import com.ejsjose.dtos.PresbiterosDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,5 +27,11 @@ public class Presbiteros {
 
     @Column( unique=true )
     private String name;
+
+    public Presbiteros() {}
+    
+    public Presbiteros( PresbiterosDTO data ) {
+        this.name = data.Name();
+    }
     
 }

@@ -1,0 +1,18 @@
+@host = http://localhost:8080
+
+###
+
+GET {{host}}/info
+
+### pega todos os presbiteros
+GET {{host}}/presbiteros
+
+
+### cria um presbitero
+POST {{host}}/presbiteros
+Content-Type: application/json
+
+{
+    name : "Teste"
+}
+

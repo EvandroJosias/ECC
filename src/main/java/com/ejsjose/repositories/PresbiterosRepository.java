@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.ejsjose.domain.presbiteros.Presbiteros;
+import com.ejsjose.domain.Presbiteros;
 
 public interface PresbiterosRepository extends JpaRepository< Presbiteros, Long> {
 
