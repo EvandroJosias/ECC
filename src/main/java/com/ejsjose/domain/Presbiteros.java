@@ -18,20 +18,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@EqualsAndHashCode(of="id")
+@EqualsAndHashCode(of="fdl_id")
 public class Presbiteros {
     
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
-    private Long id;
+    private Long fdl_id;
 
     @Column( unique=true )
-    private String name;
+    private String fdl_name;
 
     public Presbiteros() {}
     
     public Presbiteros( PresbiterosDTO data ) {
-        this.name = data.Name();
+        this.fdl_name = data.fdl_name();
     }
     
 }

@@ -31,12 +31,14 @@ public class PresbiterosService {
     }
 
     public void validate( Presbiteros padre ) throws Exception {
-        if( padre.getName().isEmpty() ) {
+        if( padre.getFdl_name().isEmpty() ) {
             throw new Exception("Padre desconhecido");
         }
     }
 
     public void savePresbitero( Presbiteros prebitero ){
+        System.out.println("esta dentro do savePresbitero");
+        System.out.println( prebitero.getFdl_name() );
         this.repository.save(prebitero);
     }
 

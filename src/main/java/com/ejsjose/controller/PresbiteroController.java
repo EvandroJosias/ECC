@@ -13,6 +13,7 @@ import com.ejsjose.services.PresbiterosService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -24,7 +25,7 @@ public class PresbiteroController {
     private PresbiterosService presbiteroService;
 
     @PostMapping
-    public ResponseEntity <Presbiteros> createPresbitero( PresbiterosDTO presbitero ) {
+    public ResponseEntity <Presbiteros> createPresbitero( @RequestBody PresbiterosDTO presbitero ) {
         Presbiteros newPresbitero = presbiteroService.createPresbitero( presbitero );
         return new ResponseEntity<>(newPresbitero, HttpStatus.CREATED);
     }
