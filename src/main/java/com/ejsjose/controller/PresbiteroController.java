@@ -22,17 +22,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PresbiteroController {
  
     @Autowired
-    private PresbiterosService presbiteroService;
+    private PresbiterosService service
 
     @PostMapping
     public ResponseEntity <Presbiteros> createPresbitero( @RequestBody PresbiterosDTO presbitero ) {
-        Presbiteros newPresbitero = presbiteroService.createPresbitero( presbitero );
+        Presbiteros newPresbitero = service.createPresbitero( presbitero );
         return new ResponseEntity<>(newPresbitero, HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<List<Presbiteros>> getAllPresbiteros(){
-        List<Presbiteros> presbiteros = this.presbiteroService.getAllPresbiteros();
+        List<Presbiteros> presbiteros = this.service.getAllPresbiteros();
         return new ResponseEntity<>(presbiteros, HttpStatus.OK);
     }
 }

@@ -9,8 +9,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
+import org.springframework.boot.test.context.SpringBootTest;
 
-
+@SpringBootTest
 class PresbiterosCrudTest {
 
 	private PresbiterosRepository presbiteroRepository;
