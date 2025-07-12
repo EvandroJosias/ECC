@@ -26,8 +26,8 @@ public class PresbiterosService {
         return this.repository.findAll();
     }
     
-    public Presbiteros findPresbiterosbyId( Long id ) throws Exception {
-        return this.repository.findPresbiterosById(id).orElseThrow(() -> new Exception("Presbitero não encontrado"));
+    public Presbiteros findPresbiterosbyId( Long fdl_id ) throws Exception {
+        return this.repository.findPresbiterosByFdlId( fdl_id ).orElseThrow(() -> new Exception("Presbitero não encontrado"));
     }
 
     public void validate( Presbiteros padre ) throws Exception {

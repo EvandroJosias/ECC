@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PresbiteroController {
  
     @Autowired
-    private PresbiterosService service
+    private PresbiterosService service;
 
     @PostMapping
     public ResponseEntity <Presbiteros> createPresbitero( @RequestBody PresbiterosDTO presbitero ) {

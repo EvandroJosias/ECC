@@ -36,7 +36,7 @@ class PresbiterosCrudTest {
 	@Test
 	void testReadPresbitero() {
 		Presbiteros presbitero = new Presbiteros();
-		presbitero.setFdl_id(1L);
+		presbitero.setFdlId(1L);
 		presbitero.setFdl_name("Maria");
 
 		when(presbiteroRepository.findById(1L)).thenReturn(Optional.of(presbitero));
@@ -49,7 +49,7 @@ class PresbiterosCrudTest {
 	@Test
 	void testUpdatePresbitero() {
 		Presbiteros presbitero = new Presbiteros();
-		presbitero.setFdl_id(1L);
+		presbitero.setFdlId(1L);
 		presbitero.setFdl_name("Carlos");
 
 		when(presbiteroRepository.save(any(Presbiteros.class))).thenReturn(presbitero);
