@@ -1,13 +1,26 @@
 package com.ejsjose;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.ejsjose.views.mainScreen;
 
-@SpringBootApplication
 public class EccApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EccApplication.class, args);
+
+		EccApplication app = new EccApplication();
+       
+        mainScreen screen = null;
+        try {
+            screen = new mainScreen();
+            screen.displayMenu();
+        } catch (Exception e) {
+            System.err.println("Erro na aplicação: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            if (screen != null) {
+                screen.dispose(); // Libera recursos da tela
+            }
+        }
+
 	}
 
 }

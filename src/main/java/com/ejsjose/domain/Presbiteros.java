@@ -1,37 +1,34 @@
 package com.ejsjose.domain;
 
-import com.ejsjose.dtos.PresbiterosDTO;
+import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity( name="tbl_presbiteros")
-@Table(name="tbl_presbiteros")
+@Entity
+@Table(name="presbiteros")
 @Getter
 @Setter
 @AllArgsConstructor
-@EqualsAndHashCode(of="fdlId")
+@EqualsAndHashCode(of="id")
 public class Presbiteros {
     
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
-    private Long fdlId;
+    private Long id;
 
     @Column( unique=true )
-    private String fdl_name;
+    private String name;
 
-    public Presbiteros() {}
-    
-    public Presbiteros( PresbiterosDTO data ) {
-        this.fdl_name = data.fdl_name();
-    }
+    private String telefone;
+
+    @Temporal(TemporalType.DATE) // Apenas a data (sem hora)
+    private Date ordenacao;
+
+    @Temporal(TemporalType.DATE) // Apenas a data (sem hora)
+    private Date natalidade;
     
 }
