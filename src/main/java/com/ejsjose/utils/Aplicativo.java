@@ -1,27 +1,27 @@
 package com.ejsjose.utils;
 
-import com.ejsjose.swing.IFilho;
-import com.ejsjose.swing.JButtonPad;
-import com.ejsjose.swing.JMenuPad;
-import com.ejsjose.swing.JPanelPad;
-import com.ejsjose.swing.JMenuItemPad;
-import com.ejsjose.swing.FDialogo;
-import com.ejsjose.swing.FFDialogo;
-import com.ejsjose.swing.FFilho;
-import com.ejsjose.swing.FMainScreen;
-
-import java.util.Vector;
-import java.lang.reflect.Method;
-import java.awt.Dimension;
 import java.awt.Component;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.lang.reflect.Method;
+import java.util.Vector;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
+import com.ejsjose.swing.FDialogo;
+import com.ejsjose.swing.FFDialogo;
+import com.ejsjose.swing.FFilho;
+import com.ejsjose.swing.FMainScreen;
+import com.ejsjose.swing.IFilho;
+import com.ejsjose.swing.JButtonPad;
+import com.ejsjose.swing.JMenuItemPad;
+import com.ejsjose.swing.JMenuPad;
+import com.ejsjose.swing.JPanelPad;
 
 public abstract class Aplicativo implements ActionListener, KeyListener {
 
@@ -31,7 +31,7 @@ public abstract class Aplicativo implements ActionListener, KeyListener {
 	public final static int TP_OPCAO_ITEM = 1;
     public final static int TP_OPCAO_SUBITEM = 2;
 
-    public static boolean bSuporte = true;
+    public static boolean bSuporte = false;
     public static FMainScreen telaPrincipal = null;
     public static Component framePrinc = null;	
     public static String strOS = System.getProperty("os.name").toLowerCase();
@@ -52,44 +52,49 @@ public abstract class Aplicativo implements ActionListener, KeyListener {
 	    instance = this;
         telaPrincipal = new FMainScreen();
 
-		addOpcao( -1, TP_OPCAO_MENU, "Arquivo", "", 'A', 100000000, 0, false, null );
-		addOpcao( 100000000, TP_OPCAO_MENU, "Tabelas", "", 'T', 100100000, 1, false, null );
-		addOpcao( 100100000, TP_OPCAO_MENU, "Acesso ao sistema", "", 'A', 100101000, 2, false, null );
-		addOpcao( 100101000, TP_OPCAO_ITEM, "Grupos", "Grupos", 'G', 100101010, 3, true, null );
-		addOpcao( 100101000, TP_OPCAO_ITEM, "Usuarios", "Usuarios", 'U', 100101020, 3, true, null );
-		//addOpcao( 100101000, TP_OPCAO_ITEM, "Acesso", "Acesso Menu", 'A', 100101030, 3, true, FAcesso.class );
-		addOpcao( 100101000, TP_OPCAO_ITEM, "Menu", "Menu X Objeto", 'M', 100101040, 3, true, null );
-		addOpcao( 100100000, TP_OPCAO_MENU, "Tabelas Geográficas", "", 'C', 100102000, 2, false, null );
-		addOpcao( 100102000, TP_OPCAO_ITEM, "Paises", "Paises", 'P', 100102020, 3, true, null );
-		addOpcao( 100102000, TP_OPCAO_ITEM, "Cidades", "Cidades", 'd', 100102030, 3, true, null);
-		addOpcao( 100102000, TP_OPCAO_ITEM, "Estados", "Estados", 'E', 100102040, 3, true, null );
-		addOpcao( 100102000, TP_OPCAO_ITEM, "Bairros", "Bairros", 'B', 100102050, 3, true, null );
-		addOpcao( 100100000, TP_OPCAO_MENU, "Objetos", "", 'O', 100103000, 2, false, null );
-		addOpcao( 100103000, TP_OPCAO_ITEM, "Tabela", "Tabelas auxiliares", 'T', 100103010, 3, true, null );
-		addOpcao( 100103000, TP_OPCAO_ITEM, "Objetos aux.", "Vinculo entre tabelas físicas e auxiliares", 'O', 100103020, 3, true, null );
-		addOpcao( 100100000, TP_OPCAO_MENU, "Fluxos", "", 'F', 100104000, 2, false, null );
-		addOpcao( 100104000, TP_OPCAO_ITEM, "Processos", "Processos", 'P', 100104100, 3, true, null );
-		addOpcao( 100104000, TP_OPCAO_ITEM, "Fluxos", "Cadastro de fluxos", 'F', 100104110, 3, true, null );
+		addOpcao( -1, TP_OPCAO_MENU, "Cadastros", "", 'C', 100000000, 0, false, null );
+		addOpcao( 100000000, TP_OPCAO_ITEM, "Foranias", "Foranias", 'F', 100100000, 1, false, null );
+		addOpcao( 100000000, TP_OPCAO_ITEM, "Paroquias", "Paroquias", 'P', 100100000, 1, false, null );
+		addOpcao( 100000000, TP_OPCAO_ITEM, "Presbiteros", "Presbiteros", 'r', 100100000, 1, false, null );
+		addOpcao( -1, TP_OPCAO_MENU, "Relatorios", "", 'R', 200000000, 0, false, null );
+		addOpcao( 200000000, TP_OPCAO_ITEM, "Foranias", "Foranias", 'F', 100100000, 1, false, null );
 
-		addOpcao( 100100000, TP_OPCAO_MENU, "Outras tabelas genéricas", "", 's', 100105000, 2, false, null );
-		addOpcao( 100105000, TP_OPCAO_ITEM, "Estados civis", "Estados civis", 'i', 100105100, 3, true, null );
-		addOpcao( 100105000, TP_OPCAO_ITEM, "Cadastro de Feriado", "Cadastro de Feriado", 'i', 100105200, 3, true, null );
-		addOpcao( 100105000, TP_OPCAO_ITEM, "Configuração de email", "Configuração de email", 'e', 100105300, 3, true, null );
-		addOpcao( 100105000, TP_OPCAO_ITEM, "Grau de instrução", "Grau de Instrução", 'G', 100105410, 3, true, null );
+		// addOpcao( 100100000, TP_OPCAO_MENU, "Acesso ao sistema", "", 'A', 100101000, 2, false, null );
+		// addOpcao( 100101000, TP_OPCAO_ITEM, "Grupos", "Grupos", 'G', 100101010, 3, true, null );
+		// addOpcao( 100101000, TP_OPCAO_ITEM, "Usuarios", "Usuarios", 'U', 100101020, 3, true, null );
+		// //addOpcao( 100101000, TP_OPCAO_ITEM, "Acesso", "Acesso Menu", 'A', 100101030, 3, true, FAcesso.class );
+		// addOpcao( 100101000, TP_OPCAO_ITEM, "Menu", "Menu X Objeto", 'M', 100101040, 3, true, null );
+		// addOpcao( 100100000, TP_OPCAO_MENU, "Tabelas Geográficas", "", 'C', 100102000, 2, false, null );
+		// addOpcao( 100102000, TP_OPCAO_ITEM, "Paises", "Paises", 'P', 100102020, 3, true, null );
+		// addOpcao( 100102000, TP_OPCAO_ITEM, "Cidades", "Cidades", 'd', 100102030, 3, true, null);
+		// addOpcao( 100102000, TP_OPCAO_ITEM, "Estados", "Estados", 'E', 100102040, 3, true, null );
+		// addOpcao( 100102000, TP_OPCAO_ITEM, "Bairros", "Bairros", 'B', 100102050, 3, true, null );
+		// addOpcao( 100100000, TP_OPCAO_MENU, "Objetos", "", 'O', 100103000, 2, false, null );
+		// addOpcao( 100103000, TP_OPCAO_ITEM, "Tabela", "Tabelas auxiliares", 'T', 100103010, 3, true, null );
+		// addOpcao( 100103000, TP_OPCAO_ITEM, "Objetos aux.", "Vinculo entre tabelas físicas e auxiliares", 'O', 100103020, 3, true, null );
+		// addOpcao( 100100000, TP_OPCAO_MENU, "Fluxos", "", 'F', 100104000, 2, false, null );
+		// addOpcao( 100104000, TP_OPCAO_ITEM, "Processos", "Processos", 'P', 100104100, 3, true, null );
+		// addOpcao( 100104000, TP_OPCAO_ITEM, "Fluxos", "Cadastro de fluxos", 'F', 100104110, 3, true, null );
+
+		// addOpcao( 100100000, TP_OPCAO_MENU, "Outras tabelas genéricas", "", 's', 100105000, 2, false, null );
+		// addOpcao( 100105000, TP_OPCAO_ITEM, "Estados civis", "Estados civis", 'i', 100105100, 3, true, null );
+		// addOpcao( 100105000, TP_OPCAO_ITEM, "Cadastro de Feriado", "Cadastro de Feriado", 'i', 100105200, 3, true, null );
+		// addOpcao( 100105000, TP_OPCAO_ITEM, "Configuração de email", "Configuração de email", 'e', 100105300, 3, true, null );
+		// addOpcao( 100105000, TP_OPCAO_ITEM, "Grau de instrução", "Grau de Instrução", 'G', 100105410, 3, true, null );
 		
-		addOpcao( 100100000, TP_OPCAO_MENU, "Logs", "", 'l', 100106000, 2, false, null );
-		addOpcao( 100106000, TP_OPCAO_ITEM, "Análise de Logs", "Análise de Logs", 'L', 100106100, 3, true, null );
+		// addOpcao( 100100000, TP_OPCAO_MENU, "Logs", "", 'l', 100106000, 2, false, null );
+		// addOpcao( 100106000, TP_OPCAO_ITEM, "Análise de Logs", "Análise de Logs", 'L', 100106100, 3, true, null );
 
-		addOpcao( 100000000, TP_OPCAO_MENU, "Ferramentas", "", 'e', 100200000, 1, false, null );
-		addOpcao( 100200000, TP_OPCAO_ITEM, "Ajuste de Sequencia", "Ajusta sequencia", 'A', 100201000, 2, true, null );
-		addOpcao( 100200000, TP_OPCAO_ITEM, "Leitura Fiscal", "Leitura Fiscal", 'F', 100202000, 2, true, null );
+		// addOpcao( 100000000, TP_OPCAO_MENU, "Ferramentas", "", 'e', 100200000, 1, false, null );
+		// addOpcao( 100200000, TP_OPCAO_ITEM, "Ajuste de Sequencia", "Ajusta sequencia", 'A', 100201000, 2, true, null );
+		// addOpcao( 100200000, TP_OPCAO_ITEM, "Leitura Fiscal", "Leitura Fiscal", 'F', 100202000, 2, true, null );
 
-		addOpcao( 100000000, TP_OPCAO_MENU, "Preferências", "", 'P', 100300000, 1, false, null );
-		addOpcao( 100300000, TP_OPCAO_ITEM, "Visual", "Configuração de Visual", 'A', 100301000, 2, true, null );
+		// addOpcao( 100000000, TP_OPCAO_MENU, "Preferências", "", 'P', 100300000, 1, false, null );
+		// addOpcao( 100300000, TP_OPCAO_ITEM, "Visual", "Configuração de Visual", 'A', 100301000, 2, true, null );
 
-		addBotao( "barraGrupo.gif", "Cadastro de Grupos", "Grupos", 100101010, null );
-		addBotao( "barraUsuario.png", "Cadastro de Usuarios", "Usuarios", 100101020, null );
-		addBotao( "barraAcesso.gif", "Controle de Acessos", "Acesso Menu", 100101030, null );
+		// addBotao( "barraGrupo.gif", "Cadastro de Grupos", "Grupos", 100101010, null );
+		// addBotao( "barraUsuario.png", "Cadastro de Usuarios", "Usuarios", 100101020, null );
+		// addBotao( "barraAcesso.gif", "Controle de Acessos", "Acesso Menu", 100101030, null );
 
 		ajustaMenu();
 
@@ -299,23 +304,23 @@ public abstract class Aplicativo implements ActionListener, KeyListener {
 
 	public void ajustaMenu() {
 		pinBotoes.setPreferredSize(new Dimension(iXPanel + 4, 30));
-		Object oMenu = getOpcao(100000000);
-		JMenuItem miSair = null;
-		if (oMenu != null) {
-			if (oMenu instanceof JMenuPad) {
-				miSair = new JMenuItemPad("Sair", 'r');
-				miSair.addActionListener(this);
-				((JMenuPad) oMenu).addSeparator();
-				((JMenuPad) oMenu).add(miSair);
-			}
-		}
+		// Object oMenu = getOpcao(500000000);
+		// JMenuItem miSair = null;
+		// if (oMenu != null) {
+		// 	if (oMenu instanceof JMenuPad) {
+		// 		miSair = new JMenuItemPad("Sair", 'r');
+		// 		miSair.addActionListener(this);
+		// 		((JMenuPad) oMenu).addSeparator();
+		// 		((JMenuPad) oMenu).add(miSair);
+		// 	}
+		// }
 		JMenuPad mAjuda = new JMenuPad("Ajuda");
-		JMenuItem miSobre = new JMenuItemPad("Sobre");
-
+		
+		JMenuItem miSobre = new JMenuItemPad("Sobre", 'S');
 		miSobre.addActionListener(this);
-
 		mAjuda.add(miSobre);
-		JMenuItem miAtalhos = new JMenuItemPad("Atalhos");
+
+		JMenuItem miAtalhos = new JMenuItemPad("Atalhos", 'A');
 		miAtalhos.addActionListener(this);
 		mAjuda.add(miAtalhos);
 
@@ -325,6 +330,11 @@ public abstract class Aplicativo implements ActionListener, KeyListener {
 			miSuporte.addActionListener(this);
 			mAjuda.add(miSuporte);
 		}
+		
+		mAjuda.addSeparator();
+		JMenuItem miSair = new JMenuItemPad("Sair", 'a');
+		miSair.addActionListener(this);
+		mAjuda.add(miSair);
 
 		telaPrincipal.bar.add(mAjuda);
 		atualizaMenus();
