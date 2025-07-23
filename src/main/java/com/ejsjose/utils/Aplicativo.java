@@ -53,43 +53,43 @@ public abstract class Aplicativo implements ActionListener, KeyListener {
         telaPrincipal = new FMainScreen();
 
 		addOpcao( -1, TP_OPCAO_MENU, "Arquivo", "", 'A', 100000000, 0, false, null );
-		// addOpcao( 100000000, TP_OPCAO_MENU, "Tabelas", "", 'T', 100100000, 1, false, null );
-		// addOpcao( 100100000, TP_OPCAO_MENU, "Acesso ao sistema", "", 'A', 100101000, 2, false, null );
-		// addOpcao( 100101000, TP_OPCAO_ITEM, "Grupos", "Grupos", 'G', 100101010, 3, true, null );
-		// addOpcao( 100101000, TP_OPCAO_ITEM, "Usuarios", "Usuarios", 'U', 100101020, 3, true, null );
-		// //addOpcao( 100101000, TP_OPCAO_ITEM, "Acesso", "Acesso Menu", 'A', 100101030, 3, true, FAcesso.class );
-		// addOpcao( 100101000, TP_OPCAO_ITEM, "Menu", "Menu X Objeto", 'M', 100101040, 3, true, null );
-		// addOpcao( 100100000, TP_OPCAO_MENU, "Tabelas Geográficas", "", 'C', 100102000, 2, false, null );
-		// addOpcao( 100102000, TP_OPCAO_ITEM, "Paises", "Paises", 'P', 100102020, 3, true, null );
-		// addOpcao( 100102000, TP_OPCAO_ITEM, "Cidades", "Cidades", 'd', 100102030, 3, true, null);
-		// addOpcao( 100102000, TP_OPCAO_ITEM, "Estados", "Estados", 'E', 100102040, 3, true, null );
-		// addOpcao( 100102000, TP_OPCAO_ITEM, "Bairros", "Bairros", 'B', 100102050, 3, true, null );
-		// addOpcao( 100100000, TP_OPCAO_MENU, "Objetos", "", 'O', 100103000, 2, false, null );
-		// addOpcao( 100103000, TP_OPCAO_ITEM, "Tabela", "Tabelas auxiliares", 'T', 100103010, 3, true, null );
-		// addOpcao( 100103000, TP_OPCAO_ITEM, "Objetos aux.", "Vinculo entre tabelas físicas e auxiliares", 'O', 100103020, 3, true, null );
-		// addOpcao( 100100000, TP_OPCAO_MENU, "Fluxos", "", 'F', 100104000, 2, false, null );
-		// addOpcao( 100104000, TP_OPCAO_ITEM, "Processos", "Processos", 'P', 100104100, 3, true, null );
-		// addOpcao( 100104000, TP_OPCAO_ITEM, "Fluxos", "Cadastro de fluxos", 'F', 100104110, 3, true, null );
+		addOpcao( 100000000, TP_OPCAO_MENU, "Tabelas", "", 'T', 100100000, 1, false, null );
+		addOpcao( 100100000, TP_OPCAO_MENU, "Acesso ao sistema", "", 'A', 100101000, 2, false, null );
+		addOpcao( 100101000, TP_OPCAO_ITEM, "Grupos", "Grupos", 'G', 100101010, 3, true, null );
+		addOpcao( 100101000, TP_OPCAO_ITEM, "Usuarios", "Usuarios", 'U', 100101020, 3, true, null );
+		//addOpcao( 100101000, TP_OPCAO_ITEM, "Acesso", "Acesso Menu", 'A', 100101030, 3, true, FAcesso.class );
+		addOpcao( 100101000, TP_OPCAO_ITEM, "Menu", "Menu X Objeto", 'M', 100101040, 3, true, null );
+		addOpcao( 100100000, TP_OPCAO_MENU, "Tabelas Geográficas", "", 'C', 100102000, 2, false, null );
+		addOpcao( 100102000, TP_OPCAO_ITEM, "Paises", "Paises", 'P', 100102020, 3, true, null );
+		addOpcao( 100102000, TP_OPCAO_ITEM, "Cidades", "Cidades", 'd', 100102030, 3, true, null);
+		addOpcao( 100102000, TP_OPCAO_ITEM, "Estados", "Estados", 'E', 100102040, 3, true, null );
+		addOpcao( 100102000, TP_OPCAO_ITEM, "Bairros", "Bairros", 'B', 100102050, 3, true, null );
+		addOpcao( 100100000, TP_OPCAO_MENU, "Objetos", "", 'O', 100103000, 2, false, null );
+		addOpcao( 100103000, TP_OPCAO_ITEM, "Tabela", "Tabelas auxiliares", 'T', 100103010, 3, true, null );
+		addOpcao( 100103000, TP_OPCAO_ITEM, "Objetos aux.", "Vinculo entre tabelas físicas e auxiliares", 'O', 100103020, 3, true, null );
+		addOpcao( 100100000, TP_OPCAO_MENU, "Fluxos", "", 'F', 100104000, 2, false, null );
+		addOpcao( 100104000, TP_OPCAO_ITEM, "Processos", "Processos", 'P', 100104100, 3, true, null );
+		addOpcao( 100104000, TP_OPCAO_ITEM, "Fluxos", "Cadastro de fluxos", 'F', 100104110, 3, true, null );
 
-		// addOpcao( 100100000, TP_OPCAO_MENU, "Outras tabelas genéricas", "", 's', 100105000, 2, false, null );
-		// addOpcao( 100105000, TP_OPCAO_ITEM, "Estados civis", "Estados civis", 'i', 100105100, 3, true, null );
-		// addOpcao( 100105000, TP_OPCAO_ITEM, "Cadastro de Feriado", "Cadastro de Feriado", 'i', 100105200, 3, true, null );
-		// addOpcao( 100105000, TP_OPCAO_ITEM, "Configuração de email", "Configuração de email", 'e', 100105300, 3, true, null );
-		// addOpcao( 100105000, TP_OPCAO_ITEM, "Grau de instrução", "Grau de Instrução", 'G', 100105410, 3, true, null );
+		addOpcao( 100100000, TP_OPCAO_MENU, "Outras tabelas genéricas", "", 's', 100105000, 2, false, null );
+		addOpcao( 100105000, TP_OPCAO_ITEM, "Estados civis", "Estados civis", 'i', 100105100, 3, true, null );
+		addOpcao( 100105000, TP_OPCAO_ITEM, "Cadastro de Feriado", "Cadastro de Feriado", 'i', 100105200, 3, true, null );
+		addOpcao( 100105000, TP_OPCAO_ITEM, "Configuração de email", "Configuração de email", 'e', 100105300, 3, true, null );
+		addOpcao( 100105000, TP_OPCAO_ITEM, "Grau de instrução", "Grau de Instrução", 'G', 100105410, 3, true, null );
 		
-		// addOpcao( 100100000, TP_OPCAO_MENU, "Logs", "", 'l', 100106000, 2, false, null );
-		// addOpcao( 100106000, TP_OPCAO_ITEM, "Análise de Logs", "Análise de Logs", 'L', 100106100, 3, true, null );
+		addOpcao( 100100000, TP_OPCAO_MENU, "Logs", "", 'l', 100106000, 2, false, null );
+		addOpcao( 100106000, TP_OPCAO_ITEM, "Análise de Logs", "Análise de Logs", 'L', 100106100, 3, true, null );
 
-		// addOpcao( 100000000, TP_OPCAO_MENU, "Ferramentas", "", 'e', 100200000, 1, false, null );
-		// addOpcao( 100200000, TP_OPCAO_ITEM, "Ajuste de Sequencia", "Ajusta sequencia", 'A', 100201000, 2, true, null );
-		// addOpcao( 100200000, TP_OPCAO_ITEM, "Leitura Fiscal", "Leitura Fiscal", 'F', 100202000, 2, true, null );
+		addOpcao( 100000000, TP_OPCAO_MENU, "Ferramentas", "", 'e', 100200000, 1, false, null );
+		addOpcao( 100200000, TP_OPCAO_ITEM, "Ajuste de Sequencia", "Ajusta sequencia", 'A', 100201000, 2, true, null );
+		addOpcao( 100200000, TP_OPCAO_ITEM, "Leitura Fiscal", "Leitura Fiscal", 'F', 100202000, 2, true, null );
 
-		// addOpcao( 100000000, TP_OPCAO_MENU, "Preferências", "", 'P', 100300000, 1, false, null );
-		// addOpcao( 100300000, TP_OPCAO_ITEM, "Visual", "Configuração de Visual", 'A', 100301000, 2, true, null );
+		addOpcao( 100000000, TP_OPCAO_MENU, "Preferências", "", 'P', 100300000, 1, false, null );
+		addOpcao( 100300000, TP_OPCAO_ITEM, "Visual", "Configuração de Visual", 'A', 100301000, 2, true, null );
 
-		// addBotao( "barraGrupo.gif", "Cadastro de Grupos", "Grupos", 100101010, null );
-		// addBotao( "barraUsuario.png", "Cadastro de Usuarios", "Usuarios", 100101020, null );
-		// addBotao( "barraAcesso.gif", "Controle de Acessos", "Acesso Menu", 100101030, null );
+		addBotao( "barraGrupo.gif", "Cadastro de Grupos", "Grupos", 100101010, null );
+		addBotao( "barraUsuario.png", "Cadastro de Usuarios", "Usuarios", 100101020, null );
+		addBotao( "barraAcesso.gif", "Controle de Acessos", "Acesso Menu", 100101030, null );
 
 		ajustaMenu();
 
@@ -327,7 +327,7 @@ public abstract class Aplicativo implements ActionListener, KeyListener {
 		}
 
 		telaPrincipal.bar.add(mAjuda);
-
+		atualizaMenus();
 	}
 
 	private void buscaMenuItem(JMenu men) {
@@ -357,7 +357,7 @@ public abstract class Aplicativo implements ActionListener, KeyListener {
 			e.printStackTrace();
 			Funcoes.mensagemErro(null, "Erro ao atualizar menus!\n" + e.getMessage());
 		}
-		Funcoes.mensagemInforma(null, "Menus atualizados com sucesso!");
+		//Funcoes.mensagemInforma(null, "Menus atualizados com sucesso!");
 	}	
 
 	private boolean upMenuDB(JMenuItem men, JMenuPad menPai) {

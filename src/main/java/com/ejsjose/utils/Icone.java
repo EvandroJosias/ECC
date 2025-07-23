@@ -14,6 +14,7 @@ public class Icone {
 	public static ImageIcon novo(String nome) {
 		ImageIcon retorno = null;
 		try {
+			System.out.println(dirImages + nome);
 			URL url = Icone.class.getResource(dirImages + nome);
 
 			if (url == null)

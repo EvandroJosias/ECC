@@ -6,7 +6,6 @@ import com.ejsjose.utils.Icone;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -39,7 +38,7 @@ public class FMainScreen extends JFrame implements ActionListener, MouseListener
 	public Color padrao = new Color(145, 167, 208);
 
     public FMainScreen() {
-        this("./images", "background.png", "Main Windows", "icon.png", "smallIcon.png", "largeIcon.png", "largeIcon2.png");
+        this("./images", "background.png", "Controle ECC", "icon.png", "smallIcon.png", "largeIcon.png", "largeIcon2.png");
     }
 
 	public FMainScreen(String sDirImagem, String sImgFundo) {
@@ -69,38 +68,14 @@ public class FMainScreen extends JFrame implements ActionListener, MouseListener
 		c.setLayout(new BorderLayout());
 
 
-        // Criar a barra de menu
-        JMenuBar menuBar = new JMenuBar();
+        // Usar a barra de menu já declarada como propriedade da classe
+        // Inicializar a barra de menu se ainda não foi feito
+        if (bar == null) {
+            bar = new JMenuBar();
+        }
 
-        // Criar o menu "Arquivo"
-        JMenu menuArquivo = new JMenu("Arquivo");
-        // Criar itens do menu "Arquivo"
-        JMenuItem itemAbrir = new JMenuItem("Abrir");
-        JMenuItem itemSalvar = new JMenuItem("Salvar");
-        JMenuItem itemSair = new JMenuItem("Sair");
-
-        // Adicionar itens ao menu "Arquivo"
-        menuArquivo.add(itemAbrir);
-        menuArquivo.add(itemSalvar);
-        menuArquivo.addSeparator(); // Adiciona um separador
-        menuArquivo.add(itemSair);
-
-        // Criar o menu "Editar"
-        JMenu menuEditar = new JMenu("Editar");
-        // Criar itens do menu "Editar"
-        JMenuItem itemCopiar = new JMenuItem("Copiar");
-        JMenuItem itemColar = new JMenuItem("Colar");
-
-        // Adicionar itens ao menu "Editar"
-        menuEditar.add(itemCopiar);
-        menuEditar.add(itemColar);
-
-        // Adicionar menus à barra de menu
-        menuBar.add(menuArquivo);
-        menuBar.add(menuEditar);
-
-
-		this.setJMenuBar(menuBar);
+        // Definir a barra de menu da janela
+		this.setJMenuBar(bar);
 
 		sairMI.setText("Sair");
 		sairMI.setMnemonic('r');
@@ -140,7 +115,14 @@ public class FMainScreen extends JFrame implements ActionListener, MouseListener
 	}
 
 	public void addMenu(JMenuPad menu) {
+		if (bar == null) {
+			bar = new JMenuBar();
+			this.setJMenuBar(bar);
+		}
 		bar.add(menu);
+		// Força a atualização da interface gráfica
+		bar.revalidate();
+		bar.repaint();
 	}
   
     public void dispose() {
@@ -264,6 +246,10 @@ public class FMainScreen extends JFrame implements ActionListener, MouseListener
 	}
 
 	public void inicializaTela() {
+		// Garantir que a barra de menu está definida
+		if (this.getJMenuBar() == null && bar != null) {
+			this.setJMenuBar(bar);
+		}
 		// TODO: implementar o inicializaTela
 		System.out.println("Tela inicializada.");
 	};
