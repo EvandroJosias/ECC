@@ -1,14 +1,19 @@
 package com.ejsjose.swing;
 
 import com.ejsjose.utils.DbConnection;
+import com.ejsjose.utils.Icone;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JButton;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JSplitPane;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.BorderLayout;
 
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
@@ -17,53 +22,94 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 
-public abstract class FMainScreen extends JFrame implements ActionListener, MouseListener, WindowListener {
+public class FMainScreen extends JFrame implements ActionListener, MouseListener, WindowListener {
 
     private static final long serialVersionUID = 1L;
+	private JSplitPane splitPane = null;
 
-    public JMenuBar bar = new JMenuBar();
 	protected JMenuItem sairMI = new JMenuItem();    
+
+    public String sImgFundo = null;
+    public JMenuBar bar = new JMenuBar();	
     public JDesktopPane dpArea = new JDesktopPane();
 	public JStatusBar statusBar = new JStatusBar();
 
-	public FMainScreen(String sDirImagem, String sImgFundo) {
-
-		this(sDirImagem, sImgFundo, null, null, null, null, null);
-	}   
-    
-    public FMainScreen(String sDirImagem, String sImgFundo, String sTitulo, String sIcone, String sIconePequeno, String sIconeGrande, String sIconeGrande2) {
-        super(sTitulo);
-        setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximiza a janela para ocupar toda a tela
-        setUndecorated(false); // Mantém a barra de título e bordas
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fecha o programa ao fechar a janela
-    }
+    public Container c = getContentPane();
+	public Color padrao = new Color(145, 167, 208);
 
     public FMainScreen() {
         this("./images", "background.png", "Main Windows", "icon.png", "smallIcon.png", "largeIcon.png", "largeIcon2.png");
     }
 
+	public FMainScreen(String sDirImagem, String sImgFundo) {
+		this(sDirImagem, sImgFundo, null, null, null, null, null);
+	}   
+    
+    public FMainScreen(String sDirImagem, String sImgFundo, String sTitulo, String sIcone, String sIconePequeno, String sIconeGrande, String sIconeGrande2) {
+//	public FMainScreen(String sDirImagem, String sImgFundo, String sImgLogoSis, String sImgLogoEmp, Color bgcolor, String urlempresa, String urlsistema) {		
+        super(sTitulo);
+        setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximiza a janela para ocupar toda a tela
+        setUndecorated(false); // Mantém a barra de título e bordas
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fecha o programa ao fechar a janela
+
+		// if (bgcolor != null) {
+		// 	padrao = bgcolor;
+		// }
+
+		if (sDirImagem != null) {
+			//Imagem.dirImages = sDirImagem;
+			Icone.dirImages = sDirImagem;
+		}
+		// lbFreedom = new JLabelPad(Icone.novo(imgLogoSis));
+		// lbStpinf = new JLabelPad(Icone.novo(imgLogoEmp));
+
+		this.sImgFundo = sImgFundo;
+
+		c.setLayout(new BorderLayout());
+
+		setJMenuBar(bar);
+
+		sairMI.setText("Sair");
+		sairMI.setMnemonic('r');
+
+		splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		splitPane.setContinuousLayout(true);
+		splitPane.setOneTouchExpandable(true);
+
+		splitPane.setTopComponent(dpArea);
+
+		splitPane.setDividerSize(1);
+
+		//montaStatus();
+
+		c.add(splitPane, BorderLayout.CENTER);
+
+		setExtendedState(MAXIMIZED_BOTH);
+
+		inicializaTela();
+
+		sairMI.addActionListener( new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				fecharJanela();
+			}
+		});
+
+		// addWindowListener(new WindowAdapter() {
+		// 	public void windowClosing(WindowEvent e) {
+		// 		fecharJanela();
+		// 	}
+		// });
+
+		// Adicona o Listener para tratar eventos da janela
+		addWindowListener(this);
+		System.out.println("final da funcao costructor FMainScreen");
+	}
+
 	public void addMenu(JMenuPad menu) {
 		bar.add(menu);
 	}
   
-	public void displayMenu() {
-        // Criação da janela (JFrame)
-        JFrame frame = new JFrame("Exemplo Swing");
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximiza a janela para ocupar toda a tela
-        frame.setUndecorated(false); // Mantém a barra de título e bordas
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fecha o programa ao fechar a janela
-
-        // Criação de um botão (JButton)
-        JButton button = new JButton("Clique aqui!");
-        button.addActionListener(e -> JOptionPane.showMessageDialog(frame, "Olá, Swing!")); // Ação ao clicar no botão
-
-        // Adiciona o botão à janela
-        frame.getContentPane().add(button);
-
-        // Torna a janela visível
-        frame.setVisible(true);
-    }
-
     public void dispose() {
     // Libere recursos, feche conexões, etc.
         // Implement dispose logic if needed
@@ -148,7 +194,12 @@ public abstract class FMainScreen extends JFrame implements ActionListener, Mous
 		comp.setVisible(true);
 	}	
 
-    public abstract void fecharJanela();	
+    public void fecharJanela() {
+		int resposta = JOptionPane.showConfirmDialog(this, "Deseja realmente sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
+		if (resposta == JOptionPane.YES_OPTION) {
+			dispose(); // Fecha a janela e libera recursos
+		}
+	};	
 
 	public boolean temTela(String nome) {
 		boolean retorno = false;
@@ -179,7 +230,10 @@ public abstract class FMainScreen extends JFrame implements ActionListener, Mous
 		return retorno;
 	}
 
-	
+	public void inicializaTela() {
+		// TODO: implementar o inicializaTela
+		System.out.println("Tela inicializada.");
+	};
 
 	// ActionListener methods
 	@Override

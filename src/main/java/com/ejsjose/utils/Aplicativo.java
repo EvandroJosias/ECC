@@ -10,7 +10,6 @@ import com.ejsjose.swing.FFDialogo;
 import com.ejsjose.swing.FFilho;
 import com.ejsjose.swing.FMainScreen;
 
-import java.util.Locale;
 import java.util.Vector;
 import java.lang.reflect.Method;
 import java.awt.Dimension;
@@ -40,8 +39,8 @@ public abstract class Aplicativo implements ActionListener, KeyListener {
 
    	protected int iCodSis = 0;
 	protected int iCodModu = 0;
-    protected Vector<JMenuItem>  vOpcoes = null;
-	protected Vector<JButtonPad> vBotoes = null;
+    protected Vector<JMenuItem>  vOpcoes = new Vector<>();
+	protected Vector<JButtonPad> vBotoes = new Vector<>();
     protected JButtonPad btAtualMenu = new JButtonPad(Icone.novo("btAtualMenu.png"));
 
     public int iXPanel = 0;    
@@ -50,8 +49,9 @@ public abstract class Aplicativo implements ActionListener, KeyListener {
 
 	
 	public Aplicativo() {
-		Locale.setDefault(new Locale("pt", "BR"));
-	    instance = this;        
+	    instance = this;
+        telaPrincipal = new FMainScreen();
+
 		addOpcao( -1, TP_OPCAO_MENU, "Arquivo", "", 'A', 100000000, 0, false, null );
 		// addOpcao( 100000000, TP_OPCAO_MENU, "Tabelas", "", 'T', 100100000, 1, false, null );
 		// addOpcao( 100100000, TP_OPCAO_MENU, "Acesso ao sistema", "", 'A', 100101000, 2, false, null );
