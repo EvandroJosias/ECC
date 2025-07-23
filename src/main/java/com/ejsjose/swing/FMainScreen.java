@@ -6,6 +6,7 @@ import com.ejsjose.utils.Icone;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -67,7 +68,39 @@ public class FMainScreen extends JFrame implements ActionListener, MouseListener
 
 		c.setLayout(new BorderLayout());
 
-		setJMenuBar(bar);
+
+        // Criar a barra de menu
+        JMenuBar menuBar = new JMenuBar();
+
+        // Criar o menu "Arquivo"
+        JMenu menuArquivo = new JMenu("Arquivo");
+        // Criar itens do menu "Arquivo"
+        JMenuItem itemAbrir = new JMenuItem("Abrir");
+        JMenuItem itemSalvar = new JMenuItem("Salvar");
+        JMenuItem itemSair = new JMenuItem("Sair");
+
+        // Adicionar itens ao menu "Arquivo"
+        menuArquivo.add(itemAbrir);
+        menuArquivo.add(itemSalvar);
+        menuArquivo.addSeparator(); // Adiciona um separador
+        menuArquivo.add(itemSair);
+
+        // Criar o menu "Editar"
+        JMenu menuEditar = new JMenu("Editar");
+        // Criar itens do menu "Editar"
+        JMenuItem itemCopiar = new JMenuItem("Copiar");
+        JMenuItem itemColar = new JMenuItem("Colar");
+
+        // Adicionar itens ao menu "Editar"
+        menuEditar.add(itemCopiar);
+        menuEditar.add(itemColar);
+
+        // Adicionar menus à barra de menu
+        menuBar.add(menuArquivo);
+        menuBar.add(menuEditar);
+
+
+		this.setJMenuBar(menuBar);
 
 		sairMI.setText("Sair");
 		sairMI.setMnemonic('r');
