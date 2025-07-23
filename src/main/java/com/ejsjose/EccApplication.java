@@ -1,27 +1,14 @@
 package com.ejsjose;
 
-import com.ejsjose.views.mainScreen;
+import com.ejsjose.utils.Aplicativo;
 
-public class EccApplication {
+public class EccApplication extends Aplicativo {
 
 	public static void main(String[] args) {
-
 		EccApplication app = new EccApplication();
-       
-        mainScreen screen = null;
-        try {
-            screen = new mainScreen();
-            screen.displayMenu();
-        } catch (Exception e) {
-            System.err.println("Erro na aplicação: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            if (screen != null) {
-                screen.dispose(); // Libera recursos da tela
-            }
-        }
-
+		app.show();
 	}
+	
 
 }
 
